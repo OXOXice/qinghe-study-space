@@ -1,6 +1,17 @@
 # 青禾学习空间
 
-校园生活工作台与英语四级学习应用，GitHub Pages 公开课程演示版，由 Codex 根据两份课程实践模板独立实现。
+面向 AI 应用实践课程的双应用作品：**校园生活工作台**与**英语四级学习空间**。项目由 [OXOXice](https://github.com/OXOXice) 提出需求并确定交付范围，OpenAI Codex 协助完成设计、编码、测试和部署。
+
+这是 AI 辅助开发的课程实践项目。网站运行时无需模型 API Key，个人记录保存在当前浏览器。
+
+## 在线体验
+
+| 应用 | 访问地址 | 主要用途 |
+| --- | --- | --- |
+| 校园生活工作台 | [打开校园应用](https://oxoxice.github.io/qinghe-study-space/) | 管理课程、校园生活与模拟成绩 |
+| 英语四级学习空间 | [打开英语应用](https://oxoxice.github.io/qinghe-study-space/english/) | 单词复习、阅读听力练习与学习打卡 |
+
+两个入口可互相切换，支持电脑和手机浏览器。详细的课程项目介绍见 [AI 项目说明](docs/AI-PROJECT.md)，分工见 [贡献者](CONTRIBUTORS.md)。
 
 ## 功能
 
@@ -15,7 +26,7 @@
 
 ## 本地运行
 
-使用 Node.js 22.13 或更新版本：
+推荐使用 Node.js 24，与部署工作流保持一致：
 
 ```sh
 npm ci
@@ -26,6 +37,15 @@ npm run preview
 ```
 
 校园入口 `/`，英语入口 `/english/`。静态构建输出在 `dist/`。
+
+## 技术与验证
+
+- React 19、TypeScript、Vite 8、Tailwind CSS 4、Zod；GitHub Actions 自动发布到 GitHub Pages。
+- localStorage 保存记录，JSON 导入导出用于备份；两个应用分别存储并校验数据格式。
+- 发布前通过 6 组核心逻辑测试和 39 项浏览器检查，覆盖页面切换、刷新保存、备份恢复、手机布局和保存失败处理。
+- GitHub Actions 每次推送到 `main` 都执行依赖安装、核心测试、类型检查和生产构建。
+
+浏览器检查是发布前的本地验证；当前工作流自动运行核心测试和构建。
 
 ## GitHub Pages
 
